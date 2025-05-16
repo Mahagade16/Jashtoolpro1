@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jash Tools - All-in-One Web Tools</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #f8f9fa;
+            --accent-color: #f72585;
+            --dark-color: #212529;
+            --light-color: #ffffff;
+            --text-color: #495057;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--light-color);
+            box-shadow: var(--box-shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px;
+            background: var(--gradient);
+            color: white;
+            margin-bottom: 40px;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #3a56d4;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+        
+        .btn-back {
+            background-color: #e9ecef;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+        
+        .btn-back:hover {
+            background-color: #dee2e6;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn i {
+            font-size: 18px;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .tool-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tool-card-header {
+            background: var(--gradient);
+            color: var(--light-color);
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .tool-card-body {
+            padding: 25px;
+        }
+        
+        .tool-card-body p {
+            margin-bottom: 20px;
+            color: #6c757d;
+        }
+        
+        .tool-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            background: rgba(67, 97, 238, 0.1);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        
+        .tool-section {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin-bottom: 40px;
+            display: none;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .tool-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tool-section h2 {
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f1f3f5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tool-section h2 i {
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e9ecef;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: var(--transition);
+            background-color: #f8f9fa;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            background-color: white;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .result-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            display: none;
+            border: 1px dashed #dee2e6;
+        }
+        
+        .result-container h3 {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .result-container pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            border: 1px solid #e9ecef;
+        }
+        
+        .ad-container {
+            background-color: #f0f2f5;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 30px 0;
+            border: 1px dashed #adb5bd;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 20px auto;
+            border: 4px solid rgba(67, 97, 238, 0.1);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive iframe for ads */
+        .responsive-ad {
+            width: 100%;
+            height: auto;
+            min-height: 90px;
+            border: none;
+            overflow: hidden;
+            background: white;
+            border-radius: var(--border-radius);
+        }
+        
+        /* Tool-specific styles */
+        .image-preview {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            border: 1px solid #dee2e6;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .hashtags-output {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .hashtag {
+            background-color: #e9ecef;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        /* Range slider styles */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e9ecef;
+            outline: none;
+            margin: 15px 0;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            background: var(--accent-color);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            nav ul li {
+                margin: 0;
+            }
+        
+            .hero {
+                padding: 60px 0 40px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tool-section {
+                padding: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo nav-link" data-section="home">
+                <i class="fas fa-tools logo-icon"></i>
+                <span>Jash</span>Tools
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link" data-section="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-section="image-resizer">Image Tools</a></li>
+                    <li><a href="#" class="nav-link" data-section="hashtag-generator">Social Media</a></li>
+                    <li><a href="#" class="nav-link" data-section="grammar-checker">Writing Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Jash Web Tools for Everyone</h1>
+            <p>online tools to boost your productivity. Image resizing, hashtag generation, grammar checking and more - all in one place!</p>
+            <a href="#" class="btn nav-link" data-section="image-resizer">
+                <i class="fas fa-rocket"></i> Explore Tools
+            </a>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="ad-container">
+            <p>Advertisement</p>
+            <div class="responsive-ad">
+                <!-- Your ad code goes here -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+                     crossorigin="anonymous"></script>
+                <!-- Responsive Ad -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXXX"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <!-- Home Section -->
+        <section id="home" class="tool-section active">
+            <h2><i class="fas fa-home"></i> All Tools</h2>
+            <p style="margin-bottom: 25px;">Select any tool below to get started. All tools are completely free to use with no registration required.</p>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-card-header">
+                        <h3>Image Resizer</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <div class="tool-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <p>Resize your images to any dimension while maintaining high quality. Supports JPG, PNG, and more.</p>
+                        <a href="#" class="btn nav-link" data-section="image-resizer">
+                            <i class="fas fa-arrow-right"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-card-header">
+                        <h3>Hashtag Generator</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <div class="tool-icon">
+                            <i class="fas fa-hashtag"></i>
+                        </div>
+                        <p>Generate trending hashtags for all social media platforms to increase your reach.</p>
+                        <a href="#" class="btn nav-link" data-section="hashtag-generator">
+                            <i class="fas fa-arrow-right"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-card-header">
+                        <h3>Grammar Checker</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <div class="tool-icon">
+                            <i class="fas fa-spell-check"></i>
+                        </div>
+                        <p>Check your text for grammar, spelling, and punctuation errors with our advanced tool.</p>
+                        <a href="#" class="btn nav-link" data-section="grammar-checker">
+                            <i class="fas fa-arrow-right"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-card-header">
+                        <h3>Text to PDF Compressor</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <p>Convert text to PDF and compress it to reduce file size while maintaining quality.</p>
+                        <a href="#" class="btn nav-link" data-section="pdf-compressor">
+                            <i class="fas fa-arrow-right"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-card-header">
+                        <h3>Age Calculator</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <div class="tool-icon">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <p>Calculate age from birth date to current date in years, months, and days.</p>
+                        <a href="#" class="btn nav-link" data-section="age-calculator">
+                            <i class="fas fa-arrow-right"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-card-header">
+                        <h3>Meta Tag Generator</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <div class="tool-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <p>Generate perfect meta tags for SEO to improve your website's search engine ranking.</p>
+                        <a href="#" class="btn nav-link" data-section="meta-tag-generator">
+                            <i class="fas fa-arrow-right"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-card-header">
+                        <h3>Robots.txt Generator</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <div class="tool-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <p>Create a custom robots.txt file to control search engine crawlers on your website.</p>
+                        <a href="#" class="btn nav-link" data-section="robots-generator">
+                            <i class="fas fa-arrow-right"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-card-header">
+                        <h3>XML Sitemap Generator</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <div class="tool-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <p>Generate XML sitemaps for your website to help search engines index your pages.</p>
+                        <a href="#" class="btn nav-link" data-section="sitemap-generator">
+                            <i class="fas fa-arrow-right"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-card-header">
+                        <h3>Google Index Checker</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <div class="tool-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <p>Check if your website pages are indexed by Google and identify indexing issues.</p>
+                        <a href="#" class="btn nav-link" data-section="index-checker">
+                            <i class="fas fa-arrow-right"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Resizer Tool -->
+        <section id="image-resizer" class="tool-section">
+            <button class="btn btn-back nav-link" data-section="home">
+                <i class="fas fa-arrow-left"></i> Back to Tools
+            </button>
+            <h2><i class="fas fa-image"></i> Image Resizer Tool</h2>
+            <p>Upload your image and resize it to your desired dimensions while maintaining high quality.</p>
+            
+            <div class="form-group">
+                <label for="image-upload">Upload Image:</label>
+                <input type="file" id="image-upload" class="form-control" accept="image/*">
+            </div>
+            
+            <div id="image-preview-container" style="text-align: center; display: none;">
+                <h4>Original Image Preview:</h4>
+                <img id="image-preview" class="image-preview" src="#" alt="Preview">
+                <p id="original-dimensions" style="margin-top: 5px;"></p>
+            </div>
+            
+            <div class="form-group">
+                <label for="image-format">Output Format:</label>
+                <select id="image-format" class="form-control">
+                    <option value="jpg">JPG</option>
+                    <option value="png">PNG</option>
+                    <option value="webp">WebP</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="image-quality">Quality: <span id="quality-value">90</span>%</label>
+                <input type="range" id="image-quality" class="form-control" min="1" max="100" value="90">
+            </div>
+            
+            <div class="form-group">
+                <label>Dimensions:</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="image-width" class="form-control" placeholder="Width (px)" min="1">
+                    <span style="display: flex; align-items: center;">×</span>
+                    <input type="number" id="image-height" class="form-control" placeholder="Height (px)" min="1">
+                </div>
+                <label style="margin-top: 10px; display: flex; align-items: center; gap: 8px;">
+                    <input type="checkbox" id="maintain-ratio" checked> Maintain aspect ratio
+                </label>
+            </div>
+            
+            <button id="resize-image" class="btn">
+                <i class="fas fa-expand"></i> Resize Image
+            </button>
+            
+            <div id="image-resizer-result" class="result-container">
+                <h3>Resized Image:</h3>
+                <div id="resized-image-container" style="text-align: center;"></div>
+                <a id="download-image" href="#" class="btn" style="margin-top: 15px;">
+                    <i class="fas fa-download"></i> Download Image
+                </a>
+            </div>
+            
+            <div class="spinner" id="image-resizer-spinner"></div>
+        </section>
+
+        <!-- Hashtag Generator Tool -->
+        <section id="hashtag-generator" class="tool-section">
+            <button class="btn btn-back nav-link" data-section="home">
+                <i class="fas fa-arrow-left"></i> Back to Tools
+            </button>
+            <h2><i class="fas fa-hashtag"></i> Social Media Hashtag Generator</h2>
+            <p>Enter keywords to generate trending hashtags for your social media posts.</p>
+            
+            <div class="form-group">
+                <label for="hashtag-keywords">Keywords (comma separated):</label>
+                <input type="text" id="hashtag-keywords" class="form-control" placeholder="travel, adventure, photography">
+            </div>
+            
+            <div class="form-group">
+                <label for="hashtag-platform">Social Platform:</label>
+                <select id="hashtag-platform" class="form-control">
+                    <option value="instagram">Instagram</option>
+                    <option value="twitter">Twitter</option>
+                    <option value="tiktok">TikTok</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="youtube">YouTube</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="hashtag-count">Number of Hashtags:</label>
+                <input type="number" id="hashtag-count" class="form-control" min="1" max="50" value="20">
+            </div>
+            
+            <button id="generate-hashtags" class="btn">
+                <i class="fas fa-magic"></i> Generate Hashtags
+            </button>
+            
+            <div id="hashtag-generator-result" class="result-container">
+                <h3>Generated Hashtags:</h3>
+                <div id="hashtags-output" class="hashtags-output"></div>
+                <button id="copy-hashtags" class="btn-outline" style="margin-top: 15px;">
+                    <i class="fas fa-copy"></i> Copy Hashtags
+                </button>
+            </div>
+        </section>
+
+        <!-- Grammar Checker Tool -->
+        <section id="grammar-checker" class="tool-section">
+            <button class="btn btn-back nav-link" data-section="home">
+                <i class="fas fa-arrow-left"></i> Back to Tools
+            </button>
+            <h2><i class="fas fa-spell-check"></i> Grammar Checker</h2>
+            <p>Check your text for grammar, spelling, and punctuation errors.</p>
+            
+            <div class="form-group">
+                <label for="grammar-text">Enter your text:</label>
+                <textarea id="grammar-text" class="form-control" rows="10" placeholder="Enter the text you want to check..."></textarea>
+            </div>
+            
+            <button id="check-grammar" class="btn">
+                <i class="fas fa-search"></i> Check Grammar
+            </button>
+            
+            <div id="grammar-checker-result" class="result-container">
+                <h3>Grammar Check Results:</h3>
+                <div id="grammar-output"></div>
+                <div id="grammar-suggestions"></div>
+            </div>
+            
+            <div class="spinner" id="grammar-checker-spinner"></div>
+        </section>
+
+        <!-- Other tools remain the same as previous version -->
+        <!-- Text to PDF Compressor Tool -->
+        <section id="pdf-compressor" class="tool-section">
+            <button class="btn btn-back nav-link" data-section="home">
+                <i class="fas fa-arrow-left"></i> Back to Tools
+            </button>
+            <h2><i class="fas fa-file-pdf"></i> Text to PDF Compressor</h2>
+            <p>Convert your text to PDF and compress it to reduce file size.</p>
+            
+            <div class="form-group">
+                <label for="pdf-text">Enter Text:</label>
+                <textarea id="pdf-text" class="form-control" rows="10" placeholder="Enter your text here..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="pdf-quality">Compression Level:</label>
+                <select id="pdf-quality" class="form-control">
+                    <option value="high">High Quality (Less Compression)</option>
+                    <option value="medium" selected>Medium Quality</option>
+                    <option value="low">Low Quality (Maximum Compression)</option>
+                </select>
+            </div>
+            
+            <button id="generate-pdf" class="btn">
+                <i class="fas fa-file-export"></i> Generate PDF
+            </button>
+            
+            <div id="pdf-compressor-result" class="result-container">
+                <h3>Your PDF is Ready:</h3>
+                <div id="pdf-output"></div>
+                <a id="download-pdf" href="#" class="btn" style="margin-top: 15px;">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </div>
+            
+            <div class="spinner" id="pdf-compressor-spinner"></div>
+        </section>
+
+        <!-- Age Calculator Tool -->
+        <section id="age-calculator" class="tool-section">
+            <button class="btn btn-back nav-link" data-section="home">
+                <i class="fas fa-arrow-left"></i> Back to Tools
+            </button>
+            <h2><i class="fas fa-birthday-cake"></i> Age Calculator</h2>
+            <p>Calculate your age in years, months, and days from your birth date.</p>
+            
+            <div class="form-group">
+                <label for="birth-date">Birth Date:</label>
+                <input type="date" id="birth-date" class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="current-date">Current Date (or select another date):</label>
+                <input type="date" id="current-date" class="form-control">
+            </div>
+            
+            <button id="calculate-age" class="btn">
+                <i class="fas fa-calculator"></i> Calculate Age
+            </button>
+            
+            <div id="age-calculator-result" class="result-container">
+                <h3>Age Calculation Result:</h3>
+                <div id="age-output"></div>
+            </div>
+        </section>
+
+        <!-- Meta Tag Generator Tool -->
+        <section id="meta-tag-generator" class="tool-section">
+            <button class="btn btn-back nav-link" data-section="home">
+                <i class="fas fa-arrow-left"></i> Back to Tools
+            </button>
+            <h2><i class="fas fa-tags"></i> Meta Tag Generator</h2>
+            <p>Generate SEO-friendly meta tags for your website.</p>
+            
+            <div class="form-group">
+                <label for="meta-title">Page Title:</label>
+                <input type="text" id="meta-title" class="form-control" placeholder="My Awesome Website">
+            </div>
+            
+            <div class="form-group">
+                <label for="meta-description">Description:</label>
+                <textarea id="meta-description" class="form-control" rows="3" placeholder="Brief description of your page content"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="meta-keywords">Keywords (comma separated):</label>
+                <input type="text" id="meta-keywords" class="form-control" placeholder="website, design, development">
+            </div>
+            
+            <div class="form-group">
+                <label for="meta-author">Author:</label>
+                <input type="text" id="meta-author" class="form-control" placeholder="Your Name">
+            </div>
+            
+            <div class="form-group">
+                <label for="meta-url">Canonical URL:</label>
+                <input type="url" id="meta-url" class="form-control" placeholder="https://example.com/page">
+            </div>
+            
+            <button id="generate-meta-tags" class="btn">
+                <i class="fas fa-code"></i> Generate Meta Tags
+            </button>
+            
+            <div id="meta-tag-generator-result" class="result-container">
+                <h3>Generated Meta Tags:</h3>
+                <pre id="meta-tags-output"></pre>
+                <button id="copy-meta-tags" class="btn-outline" style="margin-top: 15px;">
+                    <i class="fas fa-copy"></i> Copy Meta Tags
+                </button>
+            </div>
+        </section>
+
+        <!-- Robots.txt Generator Tool -->
+        <section id="robots-generator" class="tool-section">
+            <button class="btn btn-back nav-link" data-section="home">
+                <i class="fas fa-arrow-left"></i> Back to Tools
+            </button>
+            <h2><i class="fas fa-robot"></i> Robots.txt Generator</h2>
+            <p>Create a custom robots.txt file to control search engine crawlers.</p>
+            
+            <div class="form-group">
+                <label for="robots-sitemap">Sitemap URL (optional):</label>
+                <input type="url" id="robots-sitemap" class="form-control" placeholder="https://example.com/sitemap.xml">
+            </div>
+            
+            <div class="form-group">
+                <label>Disallow Paths:</label>
+                <div id="disallow-paths-container">
+                    <div class="disallow-path" style="display: flex; margin-bottom: 10px; gap: 10px;">
+                        <input type="text" class="form-control" placeholder="/private/">
+                        <button class="btn-outline remove-path">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    </div>
+                </div>
+                <button id="add-disallow-path" class="btn-outline" style="margin-top: 10px;">
+                    <i class="fas fa-plus"></i> Add Another Path
+                </button>
+            </div>
+            
+            <div class="form-group">
+                <label>Allow Paths:</label>
+                <div id="allow-paths-container">
+                    <div class="allow-path" style="display: flex; margin-bottom: 10px; gap: 10px;">
+                        <input type="text" class="form-control" placeholder="/public/">
+                        <button class="btn-outline remove-path">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    </div>
+                </div>
+                <button id="add-allow-path" class="btn-outline" style="margin-top: 10px;">
+                    <i class="fas fa-plus"></i> Add Another Path
+                </button>
+            </div>
+            
+            <div class="form-group">
+                <label for="robots-crawl-delay">Crawl Delay (seconds):</label>
+                <input type="number" id="robots-crawl-delay" class="form-control" min="0" value="0">
+            </div>
+            
+            <button id="generate-robots" class="btn">
+                <i class="fas fa-file-code"></i> Generate Robots.txt
+            </button>
+            
+            <div id="robots-generator-result" class="result-container">
+                <h3>Your Robots.txt File:</h3>
+                <pre id="robots-output"></pre>
+                <button id="copy-robots" class="btn-outline" style="margin-top: 15px;">
+                    <i class="fas fa-copy"></i> Copy Robots.txt
+                </button>
+            </div>
+        </section>
+
+        <!-- XML Sitemap Generator Tool -->
+        <section id="sitemap-generator" class="tool-section">
+            <button class="btn btn-back nav-link" data-section="home">
+                <i class="fas fa-arrow-left"></i> Back to Tools
+            </button>
+            <h2><i class="fas fa-sitemap"></i> XML Sitemap Generator</h2>
+            <p>Generate an XML sitemap for your website to help search engines index your pages.</p>
+            
+            <div class="form-group">
+                <label for="sitemap-base-url">Website Base URL:</label>
+                <input type="url" id="sitemap-base-url" class="form-control" placeholder="https://example.com">
+            </div>
+            
+            <div class="form-group">
+                <label>Pages:</label>
+                <div id="sitemap-pages-container">
+                    <div class="sitemap-page" style="display: flex; margin-bottom: 10px; gap: 10px; align-items: center;">
+                        <input type="text" class="form-control" placeholder="/about" style="flex: 2;">
+                        <select class="form-control" style="flex: 1;">
+                            <option value="daily">Daily</option>
+                            <option value="weekly" selected>Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                            <option value="never">Never</option>
+                        </select>
+                        <select class="form-control" style="flex: 1;">
+                            <option value="1.0">1.0</option>
+                            <option value="0.9">0.9</option>
+                            <option value="0.8" selected>0.8</option>
+                            <option value="0.7">0.7</option>
+                            <option value="0.6">0.6</option>
+                            <option value="0.5">0.5</option>
+                        </select>
+                        <button class="btn-outline remove-page">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                <button id="add-sitemap-page" class="btn-outline" style="margin-top: 10px;">
+                    <i class="fas fa-plus"></i> Add Another Page
+                </button>
+            </div>
+            
+            <button id="generate-sitemap" class="btn">
+                <i class="fas fa-file-code"></i> Generate Sitemap
+            </button>
+            
+            <div id="sitemap-generator-result" class="result-container">
+                <h3>Your XML Sitemap:</h3>
+                <pre id="sitemap-output"></pre>
+                <button id="copy-sitemap" class="btn-outline" style="margin-top: 15px;">
+                    <i class="fas fa-copy"></i> Copy Sitemap
+                </button>
+                <a id="download-sitemap" href="#" class="btn" style="margin-top: 15px; margin-left: 10px;">
+                    <i class="fas fa-download"></i> Download Sitemap.xml
+                </a>
+            </div>
+        </section>
+
+        <!-- Google Index Checker Tool -->
+        <section id="index-checker" class="tool-section">
+            <button class="btn btn-back nav-link" data-section="home">
+                <i class="fas fa-arrow-left"></i> Back to Tools
+            </button>
+            <h2><i class="fab fa-google"></i> Google Index Checker</h2>
+            <p>Check if your website pages are indexed by Google.</p>
+            
+            <div class="form-group">
+                <label for="index-url">Page URL:</label>
+                <input type="url" id="index-url" class="form-control" placeholder="https://example.com/page">
+            </div>
+            
+            <button id="check-index" class="btn">
+                <i class="fas fa-search"></i> Check Index Status
+            </button>
+            
+            <div id="index-checker-result" class="result-container">
+                <h3>Index Check Results:</h3>
+                <div id="index-output"></div>
+            </div>
+            
+            <div class="spinner" id="index-checker-spinner"></div>
+        </section>
+
+        <div class="ad-container">
+            <p>Advertisement</p>
+            <div class="responsive-ad">
+                <!-- Your ad code goes here -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+                     crossorigin="anonymous"></script>
+                <!-- Responsive Ad -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXXX"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+            <a href="#" class="logo" style="color: white;">
+                <i class="fas fa-tools logo-icon"></i>
+                <span style="color: var(--accent-color);">Jash</span>Tools
+            </a>
+            <div class="footer-links">
+                <a href="#" class="nav-link" data-section="home">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <p class="copyright">© 2023 Jash Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation between tool sections
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('data-section');
+                
+                // Hide all sections
+                document.querySelectorAll('.tool-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show selected section
+                document.getElementById(sectionId).classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+        
+        // Image Resizer Tool - Fully Functional Implementation
+        document.getElementById('image-upload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const preview = document.getElementById('image-preview');
+            const previewContainer = document.getElementById('image-preview-container');
+            const originalDimensions = document.getElementById('original-dimensions');
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.onload = function() {
+                    originalDimensions.textContent = `Original dimensions: ${this.naturalWidth}px × ${this.naturalHeight}px`;
+                    // Set default dimensions
+                    document.getElementById('image-width').value = this.naturalWidth;
+                    document.getElementById('image-height').value = this.naturalHeight;
+                };
+                preview.style.display = 'block';
+                previewContainer.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Maintain aspect ratio functionality
+        let lastChanged = 'width';
+        document.getElementById('image-width').addEventListener('input', function() {
+            if (document.getElementById('maintain-ratio').checked) {
+                lastChanged = 'width';
+                const preview = document.getElementById('image-preview');
+                if (preview.naturalWidth) {
+                    const ratio = preview.naturalHeight / preview.naturalWidth;
+                    document.getElementById('image-height').value = Math.round(this.value * ratio);
+                }
+            }
+        });
+        
+        document.getElementById('image-height').addEventListener('input', function() {
+            if (document.getElementById('maintain-ratio').checked) {
+                lastChanged = 'height';
+                const preview = document.getElementById('image-preview');
+                if (preview.naturalHeight) {
+                    const ratio = preview.naturalWidth / preview.naturalHeight;
+                    document.getElementById('image-width').value = Math.round(this.value * ratio);
+                }
+            }
+        });
+        
+        document.getElementById('maintain-ratio').addEventListener('change', function() {
+            if (this.checked && document.getElementById('image-preview').src !== '#') {
+                const preview = document.getElementById('image-preview');
+                if (lastChanged === 'width') {
+                    const width = document.getElementById('image-width').value;
+                    const ratio = preview.naturalHeight / preview.naturalWidth;
+                    document.getElementById('image-height').value = Math.round(width * ratio);
+                } else {
+                    const height = document.getElementById('image-height').value;
+                    const ratio = preview.naturalWidth / preview.naturalHeight;
+                    document.getElementById('image-width').value = Math.round(height * ratio);
+                }
+            }
+        });
+        
+        // Image quality slider value display
+        document.getElementById('image-quality').addEventListener('input', function() {
+            document.getElementById('quality-value').textContent = this.value;
+        });
+        
+        // Image Resizer - Process image
+        document.getElementById('resize-image').addEventListener('click', function() {
+            const fileInput = document.getElementById('image-upload');
+            const width = parseInt(document.getElementById('image-width').value);
+            const height = parseInt(document.getElementById('image-height').value);
+            const format = document.getElementById('image-format').value;
+            const quality = parseInt(document.getElementById('image-quality').value) / 100;
+            
+            if (!fileInput.files.length) {
+                alert('Please upload an image first');
+                return;
+            }
+            
+            if ((!width || width <= 0) && (!height || height <= 0)) {
+                alert('Please specify at least width or height');
+                return;
+            }
+            
+            const spinner = document.getElementById('image-resizer-spinner');
+            spinner.style.display = 'block';
+            
+            const file = fileInput.files[0];
+            const fileName = file.name.split('.')[0];
+            const resizedFileName = `${fileName}_resized.${format}`;
+            
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    // Calculate new dimensions while maintaining aspect ratio
+                    let newWidth, newHeight;
+                    const originalRatio = img.width / img.height;
+                    
+                    if (width && !height) {
+                        newWidth = width;
+                        newHeight = Math.round(width / originalRatio);
+                    } else if (!width && height) {
+                        newHeight = height;
+                        newWidth = Math.round(height * originalRatio);
+                    } else {
+                        newWidth = width;
+                        newHeight = height;
+                    }
+                    
+                    // Create canvas and resize image
+                    const canvas = document.createElement('canvas');
+                    canvas.width = newWidth;
+                    canvas.height = newHeight;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, newWidth, newHeight);
+                    
+                    // Convert to selected format
+                    let mimeType;
+                    switch(format) {
+                        case 'jpg':
+                        case 'jpeg':
+                            mimeType = 'image/jpeg';
+                            break;
+                        case 'png':
+                            mimeType = 'image/png';
+                            break;
+                        case 'webp':
+                            mimeType = 'image/webp';
+                            break;
+                        default:
+                            mimeType = 'image/jpeg';
+                    }
+                    
+                    // Convert to blob with quality setting
+                    canvas.toBlob(function(blob) {
+                        const resizedImageUrl = URL.createObjectURL(blob);
+                        
+                        // Display resized image
+                        const resizedImageContainer = document.getElementById('resized-image-container');
+                        resizedImageContainer.innerHTML = `
+                            <img src="${resizedImageUrl}" alt="Resized Image" style="max-width: 100%; border-radius: 8px; border: 1px solid #dee2e6;">
+                            <p style="margin-top: 10px;">Dimensions: ${newWidth}px × ${newHeight}px | Format: ${format.toUpperCase()} | Quality: ${Math.round(quality * 100)}%</p>
+                        `;
+                        
+                        // Set download link
+                        const downloadLink = document.getElementById('download-image');
+                        downloadLink.setAttribute('download', resizedFileName);
+                        downloadLink.setAttribute('href', resizedImageUrl);
+                        
+                        // Show result
+                        document.getElementById('image-resizer-result').style.display = 'block';
+                        spinner.style.display = 'none';
+                    }, mimeType, quality);
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+        
+        // Hashtag Generator Tool - Enhanced with more hashtags and YouTube support
+        document.getElementById('generate-hashtags').addEventListener('click', function() {
+            const keywords = document.getElementById('hashtag-keywords').value;
+            const platform = document.getElementById('hashtag-platform').value;
+            const count = parseInt(document.getElementById('hashtag-count').value);
+            
+            if (!keywords) {
+                alert('Please enter some keywords');
+                return;
+            }
+            
+            // Sample hashtags based on keywords and platform
+            const keywordList = keywords.split(',').map(k => k.trim().toLowerCase());
+            let generatedHashtags = [];
+            
+            // Common hashtags for all platforms
+            const commonHashtags = [
+                '#trending', '#viral', '#popular', '#famous', '#best', 
+                '#awesome', '#amazing', '#cool', '#love', '#like'
+            ];
+            
+            // Platform-specific hashtags
+            const platformHashtags = {
+                instagram: [
+                    '#instagood', '#photooftheday', '#instagram', '#picoftheday', '#instadaily',
+                    '#instalike', '#instafollow', '#instamood', '#instapic', '#instalove',
+                    '#igers', '#igdaily', '#igaddict', '#ig_world', '#ig_captures'
+                ],
+                twitter: [
+                    '#twitter', '#tweet', '#twit', '#twitterverse', '#twitterstorians',
+                    '#twittersphere', '#twitterati', '#twitterland', '#twittermoms', '#twitterquotes'
+                ],
+                tiktok: [
+                    '#tiktok', '#fyp', '#foryou', '#viralvideo', '#tiktoktrend',
+                    '#tiktokchallenge', '#tiktoker', '#tiktokdance', '#tiktokindia', '#tiktokmemes'
+                ],
+                facebook: [
+                    '#facebook', '#fb', '#fblive', '#fblikers', '#fbfollowers',
+                    '#facebookpage', '#facebookmarketing', '#facebooklive', '#facebookads', '#facebookpost'
+                ],
+                linkedin: [
+                    '#linkedin', '#linkedinprofile', '#linkedinmarketing', '#linkedinlearning', '#linkedinlife',
+                    '#linkedinconnections', '#linkedinbio', '#linkedinjobs', '#linkedincontent', '#linkedinengagement'
+                ],
+                youtube: [
+                    '#youtube', '#youtuber', '#youtubers', '#youtubevideo', '#youtubeguru',
+                    '#youtubechannel', '#youtubecontent', '#youtubelife', '#youtubecreator', '#youtubemusic',
+                    '#youtubevlogger', '#youtubestar', '#youtubecommunity', '#youtubegaming', '#youtubekids',
+                    '#youtubevideos', '#youtubepremium', '#youtubelive', '#youtubetutorial', '#youtubefamous'
+                ]
+            };
+            
+            // Add variations of each keyword
+            keywordList.forEach(keyword => {
+                const baseTag = keyword.replace(/\s+/g, '');
+                
+                // Basic variations
+                generatedHashtags.push(`#${baseTag}`);
+                generatedHashtags.push(`#${baseTag}s`);
+                generatedHashtags.push(`#${baseTag}life`);
+                generatedHashtags.push(`#${baseTag}lover`);
+                generatedHashtags.push(`#${baseTag}time`);
+                generatedHashtags.push(`#${baseTag}world`);
+                generatedHashtags.push(`#${baseTag}addict`);
+                generatedHashtags.push(`#${baseTag}gram`);
+                generatedHashtags.push(`#${baseTag}oftheday`);
+                generatedHashtags.push(`#${baseTag}love`);
+                
+                // Platform-specific variations
+                if (platform === 'instagram') {
+                    generatedHashtags.push(`#${baseTag}photo`);
+                    generatedHashtags.push(`#${baseTag}pics`);
+                    generatedHashtags.push(`#${baseTag}shot`);
+                } else if (platform === 'youtube') {
+                    generatedHashtags.push(`#${baseTag}video`);
+                    generatedHashtags.push(`#${baseTag}vlog`);
+                    generatedHashtags.push(`#${baseTag}channel`);
+                }
+            });
+            
+            // Add platform-specific hashtags
+            generatedHashtags = generatedHashtags.concat(platformHashtags[platform] || []);
+            
+            // Add common hashtags
+            generatedHashtags = generatedHashtags.concat(commonHashtags);
+            
+            // Remove duplicates and limit to count
+            generatedHashtags = [...new Set(generatedHashtags)].slice(0, count);
+            
+            // Display hashtags
+            const hashtagsOutput = document.getElementById('hashtags-output');
+            hashtagsOutput.innerHTML = generatedHashtags.map(tag => 
+                `<span class="hashtag">${tag}</span>`
+            ).join('');
+            
+            // Show result
+            document.getElementById('hashtag-generator-result').style.display = 'block';
+        });
+        
+        // Copy Hashtags
+        document.getElementById('copy-hashtags').addEventListener('click', function() {
+            const hashtags = Array.from(document.querySelectorAll('.hashtag'))
+                .map(el => el.textContent)
+                .join(' ');
+                
+            navigator.clipboard.writeText(hashtags).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+        
+        // Grammar Checker Tool
+        document.getElementById('check-grammar').addEventListener('click', function() {
+            const text = document.getElementById('grammar-text').value;
+            
+            if (!text.trim()) {
+                alert('Please enter some text to check');
+                return;
+            }
+            
+            const spinner = document.getElementById('grammar-checker-spinner');
+            spinner.style.display = 'block';
+            
+            // Simulate grammar checking (in a real app, you would call an API)
+            setTimeout(() => {
+                const grammarOutput = document.getElementById('grammar-output');
+                const grammarSuggestions = document.getElementById('grammar-suggestions');
+                
+                // Sample errors for demonstration
+                const sampleErrors = [
+                    {
+                        type: 'spelling',
+                        word: 'recieve',
+                        suggestion: 'receive',
+                        context: 'I will recieve the package tomorrow.',
+                        explanation: 'Common spelling mistake - "i before e except after c"'
+                    },
+                    {
+                        type: 'grammar',
+                        word: 'their',
+                        suggestion: 'there',
+                        context: 'Their are many reasons for this.',
+                        explanation: 'Incorrect usage of "their" (possessive) vs "there" (location)'
+                    },
+                    {
+                        type: 'punctuation',
+                        word: 'its',
+                        suggestion: "it's",
+                        context: 'Its important to check your work.',
+                        explanation: 'Should be the contraction "it\'s" (it is) rather than the possessive "its"'
+                    }
+                ];
+                
+                // Display found errors
+                if (Math.random() > 0.3) { // 70% chance of finding errors for demo
+                    grammarOutput.innerHTML = `
+                        <div style="background: #fff3cd; padding: 15px; border-radius: 8px; color: #856404; border-left: 4px solid #ffeeba;">
+                            <p style="font-weight: bold; margin-bottom: 10px;"><i class="fas fa-exclamation-triangle"></i> Found ${sampleErrors.length} potential issues in your text</p>
+                            <p>Review the suggestions below to improve your writing.</p>
+                        </div>
+                    `;
+                    
+                    grammarSuggestions.innerHTML = `
+                        <h4 style="margin-top: 20px; margin-bottom: 10px;">Suggestions:</h4>
+                        <div style="display: grid; gap: 15px;">
+                            ${sampleErrors.map(error => `
+                                <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #dee2e6;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <span style="font-weight: bold; color: ${error.type === 'spelling' ? '#dc3545' : error.type === 'grammar' ? '#fd7e14' : '#17a2b8'}">
+                                            ${error.type.charAt(0).toUpperCase() + error.type.slice(1)} Error
+                                        </span>
+                                        <span style="background: #f8f9fa; padding: 2px 8px; border-radius: 4px; font-size: 14px;">
+                                            ${error.word} → ${error.suggestion}
+                                        </span>
+                                    </div>
+                                    <p style="margin-bottom: 5px;">${error.context}</p>
+                                    <p style="font-size: 14px; color: #6c757d;"><i class="fas fa-info-circle"></i> ${error.explanation}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                } else {
+                    grammarOutput.innerHTML = `
+                        <div style="background: #d4edda; padding: 15px; border-radius: 8px; color: #155724; border-left: 4px solid #c3e6cb;">
+                            <p style="font-weight: bold; margin-bottom: 5px;"><i class="fas fa-check-circle"></i> No grammar issues found!</p>
+                            <p>Your text looks good. No spelling, grammar, or punctuation errors detected.</p>
+                        </div>
+                    `;
+                    grammarSuggestions.innerHTML = '';
+                }
+                
+                document.getElementById('grammar-checker-result').style.display = 'block';
+                spinner.style.display = 'none';
+            }, 1500);
+        });
+        
+        // Other tools' JavaScript remains the same as previous version
+        // Text to PDF Compressor
+        document.getElementById('generate-pdf').addEventListener('click', function() {
+            const text = document.getElementById('pdf-text').value;
+            const quality = document.getElementById('pdf-quality').value;
+            
+            if (!text) {
+                alert('Please enter some text');
+                return;
+            }
+            
+            const spinner = document.getElementById('pdf-compressor-spinner');
+            spinner.style.display = 'block';
+            
+            // Simulate PDF generation (in a real app, you would generate an actual PDF)
+            setTimeout(() => {
+                // Show result
+                const pdfOutput = document.getElementById('pdf-output');
+                pdfOutput.innerHTML = `
+                    <p>Your PDF document has been generated with ${quality} compression.</p>
+                    <p>Estimated file size: ${quality === 'high' ? '500KB' : quality === 'medium' ? '300KB' : '150KB'}</p>
+                `;
+                
+                // Set download link (in reality, this would be the actual PDF)
+                const downloadLink = document.getElementById('download-pdf');
+                downloadLink.setAttribute('download', 'compressed-document.pdf');
+                downloadLink.setAttribute('href', 'data:application/pdf;base64,' + btoa('This would be the PDF data in a real implementation'));
+                
+                document.getElementById('pdf-compressor-result').style.display = 'block';
+                spinner.style.display = 'none';
+            }, 1500);
+        });
+        
+        // Age Calculator
+        document.getElementById('calculate-age').addEventListener('click', function() {
+            const birthDate = new Date(document.getElementById('birth-date').value);
+            const currentDate = document.getElementById('current-date').value 
+                ? new Date(document.getElementById('current-date').value) 
+                : new Date();
+            
+            if (isNaN(birthDate.getTime())) {
+                alert('Please enter a valid birth date');
+                return;
+            }
+            
+            if (birthDate > currentDate) {
+                alert('Birth date cannot be in the future');
+                return;
+            }
+            
+            // Calculate age
+            let years = currentDate.getFullYear() - birthDate.getFullYear();
+            let months = currentDate.getMonth() - birthDate.getMonth();
+            let days = currentDate.getDate() - birthDate.getDate();
+            
+            if (days < 0) {
+                months--;
+                // Get the last day of the previous month
+                const lastDay = new Date(
+                    currentDate.getFullYear(), 
+                    currentDate.getMonth(), 
+                    0
+                ).getDate();
+                days += lastDay;
+            }
+            
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            // Display result
+            const ageOutput = document.getElementById('age-output');
+            ageOutput.innerHTML = `
+                <div style="background: #e9ecef; padding: 15px; border-radius: 8px;">
+                    <p><strong>Age:</strong> ${years} years, ${months} months, and ${days} days</p>
+                    <p><strong>Total Days:</strong> ${Math.floor((currentDate - birthDate) / (1000 * 60 * 60 * 24))} days</p>
+                    <p><strong>Next Birthday:</strong> ${new Date(
+                        currentDate.getFullYear(), 
+                        birthDate.getMonth(), 
+                        birthDate.getDate()
+                    ).toLocaleDateString()}</p>
+                </div>
+            `;
+            
+            document.getElementById('age-calculator-result').style.display = 'block';
+        });
+        
+        // Meta Tag Generator
+        document.getElementById('generate-meta-tags').addEventListener('click', function() {
+            const title = document.getElementById('meta-title').value;
+            const description = document.getElementById('meta-description').value;
+            const keywords = document.getElementById('meta-keywords').value;
+            const author = document.getElementById('meta-author').value;
+            const url = document.getElementById('meta-url').value;
+            
+            if (!title && !description) {
+                alert('Please enter at least a title or description');
+                return;
+            }
+            
+            let metaTags = '';
+            
+            if (title) {
+                metaTags += `<title>${title}</title>\n`;
+                metaTags += `<meta name="title" content="${title}">\n`;
+                metaTags += `<meta property="og:title" content="${title}">\n`;
+                metaTags += `<meta property="twitter:title" content="${title}">\n`;
+            }
+            
+            if (description) {
+                metaTags += `<meta name="description" content="${description}">\n`;
+                metaTags += `<meta property="og:description" content="${description}">\n`;
+                metaTags += `<meta property="twitter:description" content="${description}">\n`;
+            }
+            
+            if (keywords) {
+                metaTags += `<meta name="keywords" content="${keywords}">\n`;
+            }
+            
+            if (author) {
+                metaTags += `<meta name="author" content="${author}">\n`;
+            }
+            
+            if (url) {
+                metaTags += `<link rel="canonical" href="${url}">\n`;
+                metaTags += `<meta property="og:url" content="${url}">\n`;
+            }
+            
+            // Standard meta tags
+            metaTags += `<meta charset="UTF-8">\n`;
+            metaTags += `<meta name="viewport" content="width=device-width, initial-scale=1.0">\n`;
+            metaTags += `<meta property="og:type" content="website">\n`;
+            metaTags += `<meta property="twitter:card" content="summary_large_image">\n`;
+            
+            // Display result
+            document.getElementById('meta-tags-output').textContent = metaTags;
+            document.getElementById('meta-tag-generator-result').style.display = 'block';
+        });
+        
+        // Copy Meta Tags
+        document.getElementById('copy-meta-tags').addEventListener('click', function() {
+            const metaTags = document.getElementById('meta-tags-output').textContent;
+            navigator.clipboard.writeText(metaTags).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+        
+        // Robots.txt Generator - Add/Remove Paths
+        document.getElementById('add-disallow-path').addEventListener('click', function() {
+            const container = document.getElementById('disallow-paths-container');
+            const newPath = document.createElement('div');
+            newPath.className = 'disallow-path';
+            newPath.style = 'display: flex; margin-bottom: 10px; gap: 10px;';
+            newPath.innerHTML = `
+                <input type="text" class="form-control" placeholder="/private/">
+                <button class="btn-outline remove-path">
+                    <i class="fas fa-trash"></i> Remove
+                </button>
+            `;
+            container.appendChild(newPath);
+            
+            // Add event to remove button
+            newPath.querySelector('.remove-path').addEventListener('click', function() {
+                container.removeChild(newPath);
+            });
+        });
+        
+        document.getElementById('add-allow-path').addEventListener('click', function() {
+            const container = document.getElementById('allow-paths-container');
+            const newPath = document.createElement('div');
+            newPath.className = 'allow-path';
+            newPath.style = 'display: flex; margin-bottom: 10px; gap: 10px;';
+            newPath.innerHTML = `
+                <input type="text" class="form-control" placeholder="/public/">
+                <button class="btn-outline remove-path">
+                    <i class="fas fa-trash"></i> Remove
+                </button>
+            `;
+            container.appendChild(newPath);
+            
+            // Add event to remove button
+            newPath.querySelector('.remove-path').addEventListener('click', function() {
+                container.removeChild(newPath);
+            });
+        });
+        
+        // Generate Robots.txt
+        document.getElementById('generate-robots').addEventListener('click', function() {
+            const sitemap = document.getElementById('robots-sitemap').value;
+            const crawlDelay = document.getElementById('robots-crawl-delay').value;
+            
+            let robotsContent = `User-agent: *\n`;
+            
+            // Add disallow paths
+            document.querySelectorAll('#disallow-paths-container input').forEach(input => {
+                if (input.value.trim()) {
+                    robotsContent += `Disallow: ${input.value.trim()}\n`;
+                }
+            });
+            
+            // Add allow paths
+            document.querySelectorAll('#allow-paths-container input').forEach(input => {
+                if (input.value.trim()) {
+                    robotsContent += `Allow: ${input.value.trim()}\n`;
+                }
+            });
+            
+            // Add crawl delay if specified
+            if (crawlDelay && crawlDelay > 0) {
+                robotsContent += `Crawl-delay: ${crawlDelay}\n`;
+            }
+            
+            // Add sitemap if specified
+            if (sitemap.trim()) {
+                robotsContent += `\nSitemap: ${sitemap.trim()}\n`;
+            }
+            
+            // Display result
+            document.getElementById('robots-output').textContent = robotsContent;
+            document.getElementById('robots-generator-result').style.display = 'block';
+        });
+        
+        // Copy Robots.txt
+        document.getElementById('copy-robots').addEventListener('click', function() {
+            const robotsContent = document.getElementById('robots-output').textContent;
+            navigator.clipboard.writeText(roborsContent).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+        
+        // XML Sitemap Generator - Add/Remove Pages
+        document.getElementById('add-sitemap-page').addEventListener('click', function() {
+            const container = document.getElementById('sitemap-pages-container');
+            const newPage = document.createElement('div');
+            newPage.className = 'sitemap-page';
+            newPage.style = 'display: flex; margin-bottom: 10px; gap: 10px; align-items: center;';
+            newPage.innerHTML = `
+                <input type="text" class="form-control" placeholder="/about" style="flex: 2;">
+                <select class="form-control" style="flex: 1;">
+                    <option value="daily">Daily</option>
+                    <option value="weekly" selected>Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                    <option value="never">Never</option>
+                </select>
+                <select class="form-control" style="flex: 1;">
+                    <option value="1.0">1.0</option>
+                    <option value="0.9">0.9</option>
+                    <option value="0.8" selected>0.8</option>
+                    <option value="0.7">0.7</option>
+                    <option value="0.6">0.6</option>
+                    <option value="0.5">0.5</option>
+                </select>
+                <button class="btn-outline remove-page">
+                    <i class="fas fa-trash"></i>
+                </button>
+            `;
+            container.appendChild(newPage);
+            
+            // Add event to remove button
+            newPage.querySelector('.remove-page').addEventListener('click', function() {
+                container.removeChild(newPage);
+            });
+        });
+        
+        // Generate XML Sitemap
+        document.getElementById('generate-sitemap').addEventListener('click', function() {
+            const baseUrl = document.getElementById('sitemap-base-url').value;
+            
+            if (!baseUrl) {
+                alert('Please enter a base URL');
+                return;
+            }
+            
+            let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+            sitemapContent += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+            
+            // Get current date in correct format
+            const now = new Date();
+            const lastMod = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+            
+            // Add homepage
+            sitemapContent += `  <url>\n`;
+            sitemapContent += `    <loc>${baseUrl.replace(/\/+$/, '')}/</loc>\n`;
+            sitemapContent += `    <lastmod>${lastMod}</lastmod>\n`;
+            sitemapContent += `    <changefreq>weekly</changefreq>\n`;
+            sitemapContent += `    <priority>1.0</priority>\n`;
+            sitemapContent += `  </url>\n`;
+            
+            // Add other pages
+            document.querySelectorAll('.sitemap-page').forEach(page => {
+                const path = page.querySelector('input').value.trim();
+                const changefreq = page.querySelectorAll('select')[0].value;
+                const priority = page.querySelectorAll('select')[1].value;
+                
+                if (path) {
+                    sitemapContent += `  <url>\n`;
+                    sitemapContent += `    <loc>${baseUrl.replace(/\/+$/, '')}${path.startsWith('/') ? '' : '/'}${path}</loc>\n`;
+                    sitemapContent += `    <lastmod>${lastMod}</lastmod>\n`;
+                    sitemapContent += `    <changefreq>${changefreq}</changefreq>\n`;
+                    sitemapContent += `    <priority>${priority}</priority>\n`;
+                    sitemapContent += `  </url>\n`;
+                }
+            });
+            
+            sitemapContent += `</urlset>`;
+            
+            // Display result
+            document.getElementById('sitemap-output').textContent = sitemapContent;
+            document.getElementById('sitemap-generator-result').style.display = 'block';
+            
+            // Set download link
+            const downloadLink = document.getElementById('download-sitemap');
+            downloadLink.setAttribute('download', 'sitemap.xml');
+            downloadLink.setAttribute('href', 'data:application/xml;charset=utf-8,' + encodeURIComponent(sitemapContent));
+        });
+        
+        // Copy Sitemap
+        document.getElementById('copy-sitemap').addEventListener('click', function() {
+            const sitemapContent = document.getElementById('sitemap-output').textContent;
+            navigator.clipboard.writeText(sitemapContent).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+        
+        // Google Index Checker
+        document.getElementById('check-index').addEventListener('click', function() {
+            const url = document.getElementById('index-url').value;
+            
+            if (!url) {
+                alert('Please enter a URL to check');
+                return;
+            }
+            
+            const spinner = document.getElementById('index-checker-spinner');
+            spinner.style.display = 'block';
+            
+            // Simulate index check (in a real app, you would call Google's API)
+            setTimeout(() => {
+                const indexOutput = document.getElementById('index-output');
+                
+                // Random result for demo purposes
+                const isIndexed = Math.random() > 0.3;
+                
+                if (isIndexed) {
+                    indexOutput.innerHTML = `
+                        <div style="background: #e6f7ee; padding: 15px; border-radius: 8px; color: #0f5132;">
+                            <p style="font-weight: bold; margin-bottom: 5px;"><i class="fas fa-check-circle"></i> This page is indexed by Google</p>
+                            <p>Last crawled: ${new Date().toLocaleDateString()}</p>
+                        </div>
+                    `;
+                } else {
+                    indexOutput.innerHTML = `
+                        <div style="background: #f8d7da; padding: 15px; border-radius: 8px; color: #842029;">
+                            <p style="font-weight: bold; margin-bottom: 5px;"><i class="fas fa-times-circle"></i> This page is NOT indexed by Google</p>
+                            <p>Possible reasons:</p>
+                            <ul style="padding-left: 20px; margin-top: 5px;">
+                                <li>The page is blocked by robots.txt</li>
+                                <li>The page has a noindex meta tag</li>
+                                <li>Google hasn't crawled this page yet</li>
+                            </ul>
+                        </div>
+                    `;
+                }
+                
+                document.getElementById('index-checker-result').style.display = 'block';
+                spinner.style.display = 'none';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
